@@ -30,7 +30,7 @@
 #'    K <- Kinship(X, outPath, outName)
 #'    VC <- varComp(K, Y, X, outPath, outName)
 #'
-#'    r <- generateR(X, K, VC, outPath, outName)
+#'    gR <- generateR(X, K, VC, outPath, outName)
 #' @export
 
 ############### define functions ###############

@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <Rcpp.h>
 
+using namespace Rcpp;
 //[[Rcpp::export]]
 void generateCovBand(int windowSize, std::string corrMatrix, std::string output) {
 	std::ifstream in(corrMatrix.c_str()); //input matrix file
