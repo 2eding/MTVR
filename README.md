@@ -31,10 +31,10 @@ covBandMatrix <- generateC(windowSize, corrMatrix, outPath = "./", outName = "c.
 
 ### Step 6. Run SLIDE
 #slide_1prep: data pre-processing.<br>
-slideone <- slide_1prep
+first <- slide_step1(covBandMatrix, windowSize, outPath)
 #slide_2run: run the actual sampling.<br>
-slidetwo <- slide_2run
+second <- slide_step2(step1_prep, outPath, numSampling, seedNum)
 #slide_3sort: sort the maximum statistic.<br>
-slidethree <- slide_3sort
+third <- slide_step3(outPath, step2_prep)
 #slide_4correct: correct p-values.<br>
-slidefour <- slide_4correct
+fourth <- slide_step4(step3_prep, threshold, outPath, outName)
