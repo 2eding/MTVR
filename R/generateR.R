@@ -28,7 +28,7 @@
 #' @examples
 #'    X <- as.matrix(read.table(SNPData))
 #'    K <- Kinship(X, outPath, outName)
-#'    VC <- varComp(K, Y, X, outPath, outName)
+#'    VC <- varComp(Y, K, numThreads, outPath, outName)
 #'
 #'    gR <- generateR(X, K, VC, outPath, outName)
 #' @export
@@ -36,16 +36,7 @@
 ############### define functions ###############
 generateR <- function(X, K, VC, outPath, outName) {
   ptm <- proc.time()
-  getZscore = function(snp_one,pheno_one) {                               #for (one snp* every indi) and (one pheno * every indi)
-    coeff = summary(lm(pheno_one~snp_one))$coeff
-    if (dim(coeff)[1] == 1) return(NA)
-    else if(is.na(coeff[2,4])) return(NA)   ### this has been changed
-    else {
-      zscore = abs(qnorm(coeff[2,4]/2))
-      if (coeff[2,3] >= 0) return(zscore)
-      else return(-1*zscore)
-    }
-  }
+
   chol_solve <- function(K) {
     a = eigen(K)$vectors
     b = eigen(K)$values
@@ -53,24 +44,25 @@ generateR <- function(X, K, VC, outPath, outName) {
     b = 1/sqrt(b)
     return(a%*%diag(b)%*%t(a))
   }
-  rotate <- function(Y, sigma) {
+
+  rotate <- function(y, sigma) {
     U <- chol_solve(sigma)
     tU <-t(U)
-    UY = tU%*%Y
+    UY = tU%*%y
     return(UY)
   }
 
   snpNum <- dim(X)[2]
   indiNum <- dim(X)[1]
-  Vg <- median(VC[,1])
-  Ve <- median(VC[,2])
-  I <- matrix(0, nrow = indiNum, ncol = indiNum)
-  I[row(I) == col(I)] <- 1
-  sigmaM <- Vg*K + Ve*I
-  UX <- rotate(X, sigmaM)
-  Ur <- cor(UX, UX)
+  Vg = median(VC[,1])
+  Ve = median(VC[,2])
+  I<-matrix(0,nrow=indiNum, ncol=indiNum);
+  I[row(I)==col(I)]<-1;
+  sigmaM = Vg*K + Ve*I;
+  UX = rotate(X,sigmaM)
+  Ur=cor(UX,UX)
   write.table(Ur, paste(outPath, "/", outName, sep = ""), row.names = F, col.names = F, quote = F)
 
   print(proc.time() - ptm)
-  return(paste(outPath, "/", outName, sep = ""))
+  return(Ur)
 }

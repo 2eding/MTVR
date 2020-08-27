@@ -26,7 +26,7 @@ generateR function estimate correlation in the rotated space
 \examples{
    X <- as.matrix(read.table(SNPData))
    K <- Kinship(X, outPath, outName)
-   VC <- varComp(K, Y, X, outPath, outName)
+   VC <- varComp(Y, K, numThreads, outPath, outName)
 
    gR <- generateR(X, K, VC, outPath, outName)
 }

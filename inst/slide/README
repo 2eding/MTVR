@@ -1,0 +1,14 @@
+SLIDE (Sliding-window method for Locally Inter-correlated markers with asymptotic Distribution Errors corrected) is a multivariate normal distribution (MVN)-based multiple hypothesis testing correction method. SLIDE shows a nearly identical accuracy to the gold standard, the permutation test, and is much faster.
+
+Included in package:
+README			this file
+slide_1prep		binary for step 1/4
+slide_2run		binary for step 2/4
+slide_3sort		binary for step 3/4
+slide_4correct		binary for step 4/4
+slide			shell script sequentially running four binaries 
+ped2slide		converter PED format -> SLIDE format
+
+Copyright (c) 2009 ZarLab. The softwares are provided "AS IS", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
+
+For release info, user-guide and additional informations, please refer to http://slide.cs.ucla.edu

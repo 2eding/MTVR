@@ -1,16 +1,13 @@
 Package: MTVR
 Type: Package
-Title: R version of MultiTrans(http://genetics.cs.ucla.edu/multiTrans/)
+Title: R version of MultiTrans
 Version: 0.1.0
-Date: 2020-01-12
+Date: 2020-08-23
 Authors@R: c(person("GIJU", "LEE", role = c("aut", "cre"),
-                    email = "2eding@dongguk.edu"))
-Description: This package is the R package version of MultiTrans. if you want more info. please visit cblab.yolasite.com
+                    email = "beartange3@gmail.com"))
+Description: This package is the R package version of MultiTrans. if you want more info. please visit cblab.yolasite.com and http://genetics.cs.ucla.edu/multiTrans/
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
-Depend: R ( >= 3.5.0)
-Imports:
-  lmmlite
-LinkingTo: Rcpp
+RoxygenNote: 7.1.0
+Depend: latest R

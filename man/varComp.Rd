@@ -4,14 +4,14 @@
 \alias{varComp}
 \title{varComp}
 \usage{
-varComp(K, Y, X, outPath, outName)
+varComp(Y, K, numThreads, outPath, outName)
 }
 \arguments{
+\item{Y}{is the phenotype matrix, phenotypes x individual}
+
 \item{K}{is obtained from the Kinship function}
 
-\item{Y}{is the phenotype matrix, individual x phenotypes}
-
-\item{X}{is the SNP matrix, individual x SNPs}
+\item{numThreads}{Number of parallel processes}
 
 \item{outPath}{is a parameter that specifies the path of the result file}
 
@@ -24,9 +24,8 @@ Variance components Vg: genetic factor Ve: environment factor
 varComp function will estimate variance components
 }
 \examples{
-   X <- as.matrix(read.table(SNPData))
    Y <- as.matrix(read.table(GeneExpressionData))
    K <- Kinship(X, outPath, outName)
 
-   VC <- varComp(K, Y, X, outPath, outName)
+   VC <- varComp(Y, K, numThreads, outPath, outName)
 }
