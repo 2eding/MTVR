@@ -25,11 +25,11 @@ VC <- varComp(Y, K, numThreads, outPath, outName) (numThreads = Determines how m
 corrMatrix <- generateR(X, K, VC, outPath, outName)<br>
 covBandMatrix <- generateC(windowSize, corrMatrix, outPath = "./", outName = "c.txt")<br><br>
 ### Step 6. Run SLIDE
-step1 <- system.file('./slide_1prep', package='MTVR')
-step2 <- system.file('./slide_2run', package='MTVR')
-step3 <- system.file('./slide_3sort', package='MTVR')
-step4 <- system.file('./slide_4correct', package='MTVR')<br>
-system(paste(step1, "-C", "covBandMat path", windowSize, "outPath & outName"))
-system(paste(step2, "step1's outPath & outName", "outPath & outName", simulationNum, seedNum))
-system(paste(step3, "outPath & outName", "step2's outPath & outName"))
+step1 <- system.file('./slide_1prep', package='MTVR')<br>
+step2 <- system.file('./slide_2run', package='MTVR')<br>
+step3 <- system.file('./slide_3sort', package='MTVR')<br>
+step4 <- system.file('./slide_4correct', package='MTVR')<br><br>
+system(paste(step1, "-C", "covBandMat path", windowSize, "outPath & outName"))<br>
+system(paste(step2, "step1's outPath & outName", "outPath & outName", simulationNum, seedNum))<br>
+system(paste(step3, "outPath & outName", "step2's outPath & outName"))<br>
 system(paste(step4, "-p", "step2's outPath & outName", "threshold file path", "outPath & outName"))
